@@ -1,25 +1,31 @@
 <template>
   <div>
     <!-- This component chooses what we selecting by -->
-    <button
-      class="border rounded px-6 py-1 m-1"
-      v-for="l in letters"
-      :key="l"
-      @click="selecta(l)"
-    >
-        {{ l }}
-    </button>
+    <div class="name-buttons p-2 rounded mb-4">
+      <h2>Show List by First Letter of Last Name</h2>
 
-    <hr class="my-6">
+      <button
+        class="border rounded px-6 py-1 m-1"
+        v-for="l in letters"
+        :key="l"
+        @click="selecta(l)"
+      >
+          {{ l }}
+      </button>
+    </div>
 
-    <button
-      class="border rounded px-6 py-1 m-1"
-      v-for="c in classes"
-      :key="c"
-      @click="selecta(c)"
-    >
-        {{ c }}
-    </button>
+    <div class="class-buttons p-2 rounded">
+      <h2>Show list by classroom</h2>
+
+      <button
+        class="border rounded px-6 py-1 m-1"
+        v-for="c in classes"
+        :key="c"
+        @click="selecta(c)"
+      >
+          {{ c }}
+      </button>
+    </div>
   </div>
 </template>
 
@@ -47,5 +53,7 @@ export default {
 <style scoped>
 button {
   font-family: monospace;
+  border-color: #333;
+  @apply bg-indigo-200 text-lg;
 }
 </style>
