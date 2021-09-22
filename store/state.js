@@ -1,4 +1,3 @@
 export default () => ({
-  selectedClass: null,
-  selectedLetter: null
+  selectado: null
 })

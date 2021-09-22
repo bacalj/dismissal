@@ -2,16 +2,24 @@
   <div>
     <!-- This component chooses what we selecting by -->
     <button
-      class="border rounded p-4 m-1"
+      class="border rounded px-6 py-1 m-1"
       v-for="l in letters"
       :key="l"
-      @click="setLetter(l)"
+      @click="selecta(l)"
     >
         {{ l }}
     </button>
-    <div>
-      selectedLetter: <b>{{ theLetter }}</b>
-    </div>
+
+    <hr class="my-6">
+
+    <button
+      class="border rounded px-6 py-1 m-1"
+      v-for="c in classes"
+      :key="c"
+      @click="selecta(c)"
+    >
+        {{ c }}
+    </button>
   </div>
 </template>
 
@@ -29,14 +37,8 @@ export default {
   },
 
   methods: {
-    setLetter(l){
-      this.$store.commit('SET_LETTER', l)
-    }
-  },
-
-  computed: {
-    theLetter() {
-      return this.$store.state.selectedLetter
+    selecta(algo){
+      this.$store.commit('SELECTA', algo)
     }
   }
 }

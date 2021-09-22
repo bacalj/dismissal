@@ -1,5 +1,5 @@
 export default {
-  SET_LETTER: (state, str) => {
-    state.selectedLetter = str
+  SELECTA: (state, str) => {
+    state.selectado = str
   },
 }
