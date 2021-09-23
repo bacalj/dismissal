@@ -1,8 +1,7 @@
 <!-- Please remove this file from your project -->
 <template>
   <div>
-    list of the students, given we have selected {{ selectado }}
-    get them from firebase
+    all students are in state from firebase, but filter based on <b>{{ selectado }}</b>
     <Student v-for="s in showThese" :key="s.id" :s="s" />
   </div>
 </template>

@@ -9,6 +9,7 @@
         v-for="l in letters"
         :key="l"
         @click="selecta(l)"
+        :class="{ litUp: $store.state.selectado == l }"
       >
           {{ l }}
       </button>
@@ -22,6 +23,7 @@
         v-for="c in classes"
         :key="c"
         @click="selecta(c)"
+        :class="{ litUp: $store.state.selectado == c }"
       >
           {{ c }}
       </button>
@@ -54,6 +56,10 @@ export default {
 button {
   font-family: monospace;
   border-color: #333;
-  @apply bg-indigo-200 text-lg;
+  background-color:white;
+}
+
+button.litUp {
+  background-color: lightgreen;
 }
 </style>
