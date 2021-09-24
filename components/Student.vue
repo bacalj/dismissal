@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{ s.name }}
+    {{ s.first }} {{ s.last }} | {{ s.class }} <em>{{ s.status }}</em>
   </div>
 </template>
 

@@ -12,7 +12,7 @@ export default {
     // should be reactive but if not we'll get it all in vuex or see what we did on reading app
     // still need to add in firebase credentials
     return {
-      allStudents: [{'name' : 'Bobby', 'id' : 'abc'}, {'name' : 'Sally', 'id' : '123'}]
+      allStudents: []
     }
   },
 
@@ -37,6 +37,7 @@ export default {
       const studentsCollection = await studentsRef.get().then((qs) => {
         qs.forEach((student) => {
           console.log(student.data())
+          this.allStudents.push(student.data())
         })
       })
 
