@@ -21,7 +21,7 @@ export default {
   },
 
   mounted(){
-    this.readFromFirestore()
+    this.handleIncomingChanges()
   },
 
   computed: {
@@ -48,7 +48,7 @@ export default {
       });
     },
 
-    async readFromFirestore() {
+    async handleIncomingChanges() {
       const studentsRef = this.$fire.firestore.collection('students')
 
       studentsRef.onSnapshot((snap) =>{
@@ -72,16 +72,6 @@ export default {
 
         })
       })
-      // studentsRef.onSnapshot((snapshot) => {
-      //     snapshot.docChanges.forEach((change) => {
-      //       console.log(change.doc.data())
-      //     })
-      //   })
-      // })
-
-      /* ok client is notified of change, just have to make store react, try it , but if not work, maybe a manual patch using the change object you get back from firestore like in this so-so SO example: https://stackoverflow.com/questions/62464830/updating-a-list-on-vuejs-by-using-the-real-time-change-listener-on-firestore */
-
-
     }
   }
 }
