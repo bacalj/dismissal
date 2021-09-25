@@ -8,9 +8,6 @@
 <script>
 export default {
   data(){
-    // we'll get all the students from firebase and load them into state
-    // should be reactive but if not we'll get it all in vuex or see what we did on reading app
-    // still need to add in firebase credentials
     return {
       allStudents: []
     }
@@ -30,8 +27,11 @@ export default {
     },
 
     showThese(){
-      // this will eventually be result of filter
+      console.log('computing showThese')
+      console.log(this.selectado)
+
       return this.allStudents
+
     }
   },
 
