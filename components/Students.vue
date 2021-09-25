@@ -67,10 +67,10 @@ export default {
               return student.id == idToChange
             })
 
-            console.log(indexOfStudent)
+
 
             // 2 this.$set item.status to change.doc.data().status
-           // this.$set(this.allStudents[indexOfStudent], 'status', change.doc.data().status)
+            this.$set(this.allStudents[indexOfStudent], 'status', newStatus)
           }
 
 
