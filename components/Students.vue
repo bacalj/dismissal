@@ -2,8 +2,12 @@
 <template>
   <div>
     <Student
-      v-for="s in allStudents" :key="s.id" :s="s"
-      v-show="amInFilter(s)"
+      v-for="s in allStudents"
+      :key="s.id"
+      :first="s.first"
+      :last="s.last"
+      :inClass="s.class"
+      :status="s.status"
     />
   </div>
 </template>
@@ -34,22 +38,6 @@ export default {
   },
 
   methods: {
-    amInFilter(x){
-      if ( this.$store.state.selectado == null){
-        return true
-      }
-
-      else {
-        if (x.class == this.$store.state.selectado){
-          return true
-        }
-
-        else {
-          return false
-        }
-      }
-    },
-
     async setInitialData(){
       this.$fire.firestore.collection("students").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
