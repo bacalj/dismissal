@@ -1,7 +1,10 @@
 <!-- Please remove this file from your project -->
 <template>
   <div>
-    <Student v-for="s in showThese" :key="s.id" :s="s" />
+    <Student
+      v-for="s in allStudents" :key="s.id" :s="s"
+      v-show="amInFilter(s)"
+    />
   </div>
 </template>
 
@@ -21,24 +24,32 @@ export default {
     this.handleIncomingChanges()
   },
 
+  /*
+    filter nearly working, I think I have to watch selectado, and when it changes, call amInFilter or run filters in some other way, look and see what you did on self-evident
+  */
   computed: {
     selectado(){
       return this.$store.state.selectado
-    },
-
-    showThese(){
-      console.log('computing showThese')
-      console.log(this.selectado)
-
-      return this.allStudents
-
     }
   },
 
-
-
- /* ok lets do patches in moounted but initial load in asyncData or created() */
   methods: {
+    amInFilter(x){
+      if ( this.$store.state.selectado == null){
+        return true
+      }
+
+      else {
+        if (x.class == this.$store.state.selectado){
+          return true
+        }
+
+        else {
+          return false
+        }
+      }
+    },
+
     async setInitialData(){
       this.$fire.firestore.collection("students").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
