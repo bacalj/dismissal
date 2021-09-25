@@ -52,21 +52,18 @@ export default {
       const studentsRef = this.$fire.firestore.collection('students')
 
       studentsRef.onSnapshot((snap) =>{
-        let changes = snap.docChanges()
-        changes.forEach((change) => {
+
+        snap.docChanges().forEach((change) => {
 
           if (change.type === "modified") {
 
-            let idToChange = change.doc.id
-            let newStatus = change.doc.data().status
-
             // 1 find address of the changed student in allStudents
-            const indexOfStudent = this.allStudents.findIndex((student) => {
-              return student.id == idToChange
+            const thisOne = this.allStudents.findIndex((student) => {
+              return student.id == change.doc.id
             })
 
             // 2 set that students status to the new status
-            this.$set(this.allStudents[indexOfStudent], 'status', newStatus)
+            this.$set(this.allStudents[thisOne], 'status', change.doc.data().status)
           }
 
 
