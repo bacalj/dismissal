@@ -6,7 +6,7 @@
       :key="s.id"
       :first="s.first"
       :last="s.last"
-      :inClass="s.class"
+      :room="s.room"
       :status="s.status"
     />
   </div>
@@ -41,7 +41,13 @@ export default {
     async setInitialData(){
       this.$fire.firestore.collection("students").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          let studentObj = { id: doc.id, first: doc.data().first, last: doc.data().last, status: doc.data().status }
+          let studentObj = {
+            id: doc.id,
+            first: doc.data().first,
+            last: doc.data().last,
+            status: doc.data().status,
+            room: doc.data().room
+          }
           this.allStudents.push(studentObj)
         });
       });
