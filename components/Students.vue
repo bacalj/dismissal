@@ -60,16 +60,12 @@ export default {
             let idToChange = change.doc.id
             let newStatus = change.doc.data().status
 
-            console.log(idToChange, " - should now be: ", newStatus)
-
-            // 1 find item in array where change.doc.id == item.id
+            // 1 find address of the changed student in allStudents
             const indexOfStudent = this.allStudents.findIndex((student) => {
               return student.id == idToChange
             })
 
-
-
-            // 2 this.$set item.status to change.doc.data().status
+            // 2 set that students status to the new status
             this.$set(this.allStudents[indexOfStudent], 'status', newStatus)
           }
 
