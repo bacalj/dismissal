@@ -11,6 +11,7 @@
       <label for="two">Dismissed</label>
 
       <pre class="bg-gray-200">
+        <code>id: {{ studentId }}</code>
         <code>this.localStatus: {{ localStatus }}</code>
         <code class="text-red-500">this.status: {{ status }}</code>
       </pre>
@@ -29,6 +30,7 @@ export default {
   watch: {
     localStatus(val, oldVal) {
       console.log("send an event up to change ", this.studentId, " from ", oldVal, " to ", val, );
+      this.setStudentStatus(val)
     },
 
     status(n,o){
@@ -49,6 +51,16 @@ export default {
   methods: {
     setLocalStatus(){
       this.localStatus = this.status
+    },
+
+    async setStudentStatus(value){
+      const studentRef = this.$fire.firestore.collection('students').doc(this.studentId)
+      try {
+        await studentRef.update({status: value})
+      } catch(e) {
+        alert(e)
+        return
+      }
     }
   },
 
