@@ -6,9 +6,9 @@
       </h1>
     </div>
 
-    <div class="my-2 mr-2">
-      <nuxt-link to="/">Dismiss</nuxt-link>
-      <nuxt-link to="/rooms">Classroom View</nuxt-link>
+    <div class="my-2 mx-2 pb-4 md:pb-0">
+      <nuxt-link to="/">Dismiss View</nuxt-link>
+      <nuxt-link to="/rooms">Classroom Views</nuxt-link>
     </div>
   </nav>
 </template>

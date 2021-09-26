@@ -1,7 +1,8 @@
 <template>
-  <div v-show="amInFilter">
-    {{ first }} {{ last }} | {{ room }} <em>{{ status }}</em> <br>
-    <pre><code>{{ this.$store.state.selectado }}</code></pre>
+  <div v-show="amInFilter" class="rounded shadow p-3 bg-white mb-2 flex justify-betweeen">
+    <div class="name w-1/3">{{ first }} {{ last }}</div>
+    <div class="room w-1/6">{{ room }}</div>
+    <div class="status w-1/2">{{ status }}</div>
   </div>
 </template>
 

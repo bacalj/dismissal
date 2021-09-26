@@ -1,9 +1,7 @@
 <template>
   <div>
     <!-- This component chooses what we selecting by -->
-    <div class="name-buttons p-2 rounded mb-4">
-      <h2>Show List by First Letter of Last Name</h2>
-
+    <div class="name-buttons p-2 mb-4 bg-gray-300">
       <button
         class="border rounded px-6 py-1 m-1"
         v-for="l in letters"
@@ -11,22 +9,10 @@
         @click="selecta(l)"
         :class="{ litUp: $store.state.selectado == l }"
       >
-          {{ l }}
+          {{ l.toUpperCase() }}
       </button>
-    </div>
 
-    <div class="class-buttons p-2 rounded">
-      <h2>Show list by classroom</h2>
-
-      <button
-        class="border rounded px-6 py-1 m-1"
-        v-for="c in classes"
-        :key="c"
-        @click="selecta(c)"
-        :class="{ litUp: $store.state.selectado == c }"
-      >
-          {{ c }}
-      </button>
+      <button class="border rounded px-6 show-all py-1 m-1" @click="showAll">Show All</button>
     </div>
   </div>
 </template>
@@ -37,9 +23,6 @@ export default {
     return {
       letters: [
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-      ],
-      classes: [
-        'KT', 'KL', '1M', '2W', '3Z', '3N', '4A', '4E', '5M', '5D', '6K', '6G'
       ]
     }
   },
@@ -54,12 +37,16 @@ export default {
 
 <style scoped>
 button {
-  font-family: monospace;
-  border-color: #333;
-  background-color:white;
+  @apply bg-white border-none m-2;
+  width:60px;
+}
+
+button.show-all {
+  width:auto;
+  @apply bg-indigo-100;
 }
 
 button.litUp {
-  background-color: lightgreen;
+  @apply bg-red-100;
 }
 </style>

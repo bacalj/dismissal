@@ -1,6 +1,6 @@
 <!-- Please remove this file from your project -->
 <template>
-  <div>
+  <div class="pl-4 mr-24">
     <Student
       v-for="s in allStudents"
       :key="s.id"
