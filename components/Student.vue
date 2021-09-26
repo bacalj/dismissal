@@ -4,13 +4,17 @@
     <div class="room w-1/6">{{ room }}</div>
     <div class="status-radio w-1/2">
 
-      <input type="radio" id="waiting" value="waiting" v-model="status">
-      <label for="Walking">waiting</label>
+      <input type="radio" id="waiting" value="waiting" v-model="localStatus">
+      <label for="Walking">Waiting</label>
 
-      <input type="radio" id="dismissed" value="dismissed" v-model="status">
+      <input type="radio" id="dismissed" value="dismissed" v-model="localStatus">
       <label for="two">Dismissed</label>
 
-      <span class="ml-3">Status: {{ status }}</span>
+      <pre class="bg-gray-200">
+        <code>this.localStatus: {{ localStatus }}</code>
+        <code>this.status: {{ status }}</code>
+      </pre>
+
     </div>
   </div>
 </template>
@@ -19,13 +23,27 @@
 
 
 export default {
-  /* ok gotta do this right vis-a-vis firebase magic, vue magic, etc.
-  vue.runtime.esm.js?2b0e:619 [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "status"
-  */
+
   watch: {
-    status(val, oldVal) {
-      console.log(val, oldVal);
+    localStatus(val, oldVal) {
+      console.log("send an event up to change ", this.studentId, " from ", oldVal, " to ", val, );
     },
+  },
+
+  data(){
+    return {
+      localStatus: null
+    }
+  },
+
+  mounted(){
+    this.setLocalStatus()
+  },
+
+  methods: {
+    setLocalStatus(){
+      this.localStatus = this.status
+    }
   },
 
   computed: {
@@ -54,7 +72,8 @@ export default {
     first: String,
     last: String,
     room: String,
-    status: String
+    status: String,
+    studentId: String
   }
 }
 </script>

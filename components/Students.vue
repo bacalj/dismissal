@@ -8,6 +8,7 @@
       :last="s.last"
       :room="s.room"
       :status="s.status"
+      :studentId="s.id"
     />
   </div>
 </template>
