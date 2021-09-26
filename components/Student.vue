@@ -10,12 +10,6 @@
       <input type="radio" id="dismissed" value="dismissed" v-model="localStatus">
       <label for="two">Dismissed</label>
 
-      <pre class="bg-gray-200">
-        <code>id: {{ studentId }}</code>
-        <code>this.localStatus: {{ localStatus }}</code>
-        <code class="text-red-500">this.status: {{ status }}</code>
-      </pre>
-
     </div>
   </div>
 </template>
@@ -24,12 +18,9 @@
 
 
 export default {
-  /* actually I think we can just zap it right up to firebase and it will cascade back down?
-    just write the change to firestore on change to local id
-  */
+
   watch: {
     localStatus(val, oldVal) {
-      console.log("send an event up to change ", this.studentId, " from ", oldVal, " to ", val, );
       this.setStudentStatus(val)
     },
 
