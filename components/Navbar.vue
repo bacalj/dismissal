@@ -1,9 +1,9 @@
 <template>
   <nav class="navbar">
     <div class="my-2">
-      <h1>
+
         <h1 class="text-lg p-2">🚦 Campus School Dismissal Board</h1>
-      </h1>
+
     </div>
 
     <div class="my-2 mx-2 pb-4 md:pb-0">

@@ -23,11 +23,15 @@
 
 
 export default {
-
+  /* actually I think we can just zap it right up to firebase and it will cascade back down? */
   watch: {
     localStatus(val, oldVal) {
       console.log("send an event up to change ", this.studentId, " from ", oldVal, " to ", val, );
     },
+
+    status(n,o){
+      this.setLocalStatus()
+    }
   },
 
   data(){
