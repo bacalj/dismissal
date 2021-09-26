@@ -12,7 +12,7 @@
 
       <pre class="bg-gray-200">
         <code>this.localStatus: {{ localStatus }}</code>
-        <code>this.status: {{ status }}</code>
+        <code class="text-red-500">this.status: {{ status }}</code>
       </pre>
 
     </div>
@@ -23,7 +23,9 @@
 
 
 export default {
-  /* actually I think we can just zap it right up to firebase and it will cascade back down? */
+  /* actually I think we can just zap it right up to firebase and it will cascade back down?
+    just write the change to firestore on change to local id
+  */
   watch: {
     localStatus(val, oldVal) {
       console.log("send an event up to change ", this.studentId, " from ", oldVal, " to ", val, );
