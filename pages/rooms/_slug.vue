@@ -1,11 +1,11 @@
 <template>
-<div>room: {{ classRoom }} </div>
+<div>room: {{ classroom }} </div>
 </template>
 
 <script>
 export default {
   computed: {
-    classRoom(){
+    classroom(){
       return this.$route.params.slug
     }
   }
