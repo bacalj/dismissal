@@ -19,7 +19,9 @@
 
 
 export default {
-
+  /* ok gotta do this right vis-a-vis firebase magic, vue magic, etc.
+  vue.runtime.esm.js?2b0e:619 [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop's value. Prop being mutated: "status"
+  */
   watch: {
     status(val, oldVal) {
       console.log(val, oldVal);
