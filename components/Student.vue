@@ -2,7 +2,16 @@
   <div v-show="amInFilter" class="rounded shadow p-3 bg-white mb-2 flex justify-betweeen">
     <div class="name w-1/3">{{ first }} {{ last }}</div>
     <div class="room w-1/6">{{ room }}</div>
-    <div class="status w-1/2">{{ status }}</div>
+    <div class="status-radio w-1/2">
+
+      <input type="radio" id="waiting" value="waiting" v-model="status">
+      <label for="Walking">waiting</label>
+
+      <input type="radio" id="dismissed" value="dismissed" v-model="status">
+      <label for="two">Dismissed</label>
+
+      <span class="ml-3">Status: {{ status }}</span>
+    </div>
   </div>
 </template>
 

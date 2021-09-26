@@ -12,7 +12,7 @@
           {{ l.toUpperCase() }}
       </button>
 
-      <button class="border rounded px-6 show-all py-1 m-1" @click="showAll">Show All</button>
+      <button class="border rounded px-6 show-all py-1 m-1" @click="showAll">All</button>
     </div>
   </div>
 </template>
@@ -30,6 +30,10 @@ export default {
   methods: {
     selecta(algo){
       this.$store.commit('SELECTA', algo)
+    },
+
+    showAll(){
+      this.$store.commit('SELECTA', null)
     }
   }
 }
@@ -42,7 +46,7 @@ button {
 }
 
 button.show-all {
-  width:auto;
+  text-align: center;
   @apply bg-indigo-100;
 }
 
