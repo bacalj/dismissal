@@ -15,7 +15,7 @@
 
 <style lang="postcss" scoped>
 .navbar {
-  @apply flex flex-col text-center sm:flex-row sm:text-left sm:justify-between bg-white shadow sm:items-baseline w-full;
+  @apply flex flex-col text-center sm:flex-row sm:text-left sm:justify-between bg-white   sm:items-baseline w-full;
 }
 
 a {

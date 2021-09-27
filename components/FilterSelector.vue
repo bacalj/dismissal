@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- This component chooses what we selecting by -->
-    <div class="name-buttons p-2 mb-4 bg-gray-300">
+    <div class="name-buttons p-2 mb-4 bg-gray-600">
       <button
         class="border rounded px-6 py-1 m-1"
         v-for="l in letters"

@@ -1,14 +1,14 @@
 <template>
-  <div v-show="amInFilter" class="rounded shadow overflow-hidden pl-3 bg-white mb-2">
-    <div class="p-1">
-      <div class="py-3 name">{{ first }} {{ last }}</div>
-      <div class="py-3 room">{{ room }}</div>
+  <div v-show="amInFilter" class="rounded border border-gray-600 overflow-hidden bg-gray-100 mb-2">
+    <div class="flex justify-between">
+      <div class="pl-3 py-3 name">{{ first }} {{ last }}</div>
+      <div class="py-3 room pr-3">{{ room }}</div>
     </div>
-    <div class="p-1 flex justify-between">
+    <div class="flex justify-between text-center">
 
         <button
           :id="`${studentId}_walking`"
-          class="flex cursor-pointer py-3 px-5 w-1/3"
+          class="text-center border-r border-t border-gray-300 bg-white cursor-pointer py-3 px-5 w-1/3"
           :class="{ activo : status == 'walking'}"
           @click="setStudentStatus('walking')"
         >
@@ -17,7 +17,7 @@
 
         <button
           :id="`${studentId}_waiting`"
-          class="flex cursor-pointer py-3 px-5 w-1/3"
+          class="text-center border-r border-t border-gray-300 bg-white cursor-pointer py-3 px-5 w-1/3"
           :class="{ activo : status == 'waiting'}"
           @click="setStudentStatus('waiting')"
         >
@@ -26,7 +26,7 @@
 
         <button
           :id="`${studentId}_rides-here`"
-          class="flex cursor-pointer py-3 px-5 w-1/3"
+          class="text-center bg-white border-t border-gray-300 cursor-pointer py-3 px-5 w-1/3"
           :class="{ activo : status == 'rides-here'}"
           @click="setStudentStatus('rides-here')"
         >
@@ -88,8 +88,11 @@ export default {
 
 <style lang="postcss" scoped>
 
+button {
+  text-align: center;
+}
 .activo {
-  @apply bg-blue-200 shadow
+  @apply bg-blue-200
 }
 
 </style>

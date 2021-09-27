@@ -19,7 +19,7 @@ export default {
 </script>
 <style lang="postcss" scoped>
 a {
-  @apply px-3 py-2 rounded border border-gray-200 bg-white p-12 shadow rounded m-2;
+  @apply px-3 py-2 rounded border border-gray-200 bg-white p-12   rounded m-2;
   display: inline-block;
 }
 
