@@ -1,14 +1,36 @@
 <template>
-  <div v-show="amInFilter" class="rounded shadow p-3 bg-white mb-2 flex justify-betweeen">
-    <div class="name w-1/3">{{ first }} {{ last }}</div>
-    <div class="room w-1/6">{{ room }}</div>
-    <div class="status-radio w-1/2">
+  <div v-show="amInFilter" class="rounded shadow pl-3 bg-white mb-2 flex justify-betweeen">
+    <div class="py-3 name w-1/3">{{ first }} {{ last }}</div>
+    <div class="py-3 room w-1/6">{{ room }}</div>
 
-      <input type="radio" id="waiting" value="waiting" v-model="localStatus">
-      <label for="Walking">Waiting</label>
+    <div class="status-radio w-1/2 text-right">
 
-      <input type="radio" id="dismissed" value="dismissed" v-model="localStatus">
-      <label for="two">Dismissed</label>
+        <button
+          :id="`${studentId}_walking`"
+          class="-mr-1 cursor-pointer py-3 px-5"
+          :class="{ activo : status == 'walking'}"
+          @click="setStudentStatus('walking')"
+        >
+          🚸 Walking
+        </button>
+
+        <button
+          :id="`${studentId}_waiting`"
+          class="-mr-1 cursor-pointer py-3 px-5"
+          :class="{ activo : status == 'waiting'}"
+          @click="setStudentStatus('waiting')"
+        >
+          ⏳ Waiting
+        </button>
+
+        <button
+          :id="`${studentId}_rides-here`"
+          class="-mr-1 cursor-pointer py-3 px-5"
+          :class="{ activo : status == 'rides-here'}"
+          @click="setStudentStatus('rides-here')"
+        >
+          🚗 Ride Here
+        </button>
 
     </div>
   </div>
@@ -87,3 +109,10 @@ export default {
 }
 </script>
 
+<style lang="postcss" scoped>
+
+.activo {
+  @apply bg-blue-200 shadow
+}
+
+</style>
