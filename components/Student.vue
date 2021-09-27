@@ -1,13 +1,14 @@
 <template>
-  <div v-show="amInFilter" class="rounded shadow pl-3 bg-white mb-2 flex justify-betweeen">
-    <div class="py-3 name w-1/3">{{ first }} {{ last }}</div>
-    <div class="py-3 room w-1/6">{{ room }}</div>
-
-    <div class="status-radio w-1/2 text-right">
+  <div v-show="amInFilter" class="rounded shadow overflow-hidden pl-3 bg-white mb-2">
+    <div class="p-1">
+      <div class="py-3 name">{{ first }} {{ last }}</div>
+      <div class="py-3 room">{{ room }}</div>
+    </div>
+    <div class="p-1 flex justify-between">
 
         <button
           :id="`${studentId}_walking`"
-          class="-mr-1 cursor-pointer py-3 px-5"
+          class="flex cursor-pointer py-3 px-5 w-1/3"
           :class="{ activo : status == 'walking'}"
           @click="setStudentStatus('walking')"
         >
@@ -16,7 +17,7 @@
 
         <button
           :id="`${studentId}_waiting`"
-          class="-mr-1 cursor-pointer py-3 px-5"
+          class="flex cursor-pointer py-3 px-5 w-1/3"
           :class="{ activo : status == 'waiting'}"
           @click="setStudentStatus('waiting')"
         >
@@ -25,7 +26,7 @@
 
         <button
           :id="`${studentId}_rides-here`"
-          class="-mr-1 cursor-pointer py-3 px-5"
+          class="flex cursor-pointer py-3 px-5 w-1/3"
           :class="{ activo : status == 'rides-here'}"
           @click="setStudentStatus('rides-here')"
         >
@@ -41,31 +42,7 @@
 
 export default {
 
-  watch: {
-    localStatus(val, oldVal) {
-      this.setStudentStatus(val)
-    },
-
-    status(n,o){
-      this.setLocalStatus()
-    }
-  },
-
-  data(){
-    return {
-      localStatus: null
-    }
-  },
-
-  mounted(){
-    this.setLocalStatus()
-  },
-
   methods: {
-    setLocalStatus(){
-      this.localStatus = this.status
-    },
-
     async setStudentStatus(value){
       const studentRef = this.$fire.firestore.collection('students').doc(this.studentId)
       try {
