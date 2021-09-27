@@ -1,9 +1,19 @@
 <template>
-  <div class="p-12">
-    <div>room: {{ classroom }} </div>
+  <div class="p-12 room green-text">
+    <div>
+      <h1 class="green-text">room: {{ classroom }}</h1>
+    </div>
+    <br><span class="green-text">---------</span>
     <ul>
-      <li v-for="s in studentsInRoom" :key="s.id">
-        {{ s.first }} {{ s.last }}: {{ s.status }}
+      <li v-for="s in studentsInRoom" :key="s.id" class="green-text flex mb-2">
+        <div class="w-1/4">
+          {{ s.first }} {{ s.last }}
+        </div>
+        <div class="w-1/4">{{ s.status }}</div>
+        <div class="w-1/4">
+          <button class="ok">OK</button>
+        </div>
+
       </li>
     </ul>
   </div>
@@ -75,3 +85,20 @@ export default {
 }
 </script>
 
+<style lang="postcss" scoped>
+.green-text {
+  font-family: 'DotGothic16', monospace;
+  color:rgb(153, 229, 153);
+  @apply text-2xl;
+}
+
+.green-text.faded {
+  color:rgb(87, 107, 87);
+}
+
+button.ok {
+  color: rgb(31, 41, 55);
+  background-color: rgb(153, 229, 153);
+  @apply px-3
+}
+</style>

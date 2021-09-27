@@ -7,7 +7,7 @@
 
 <style lang="postcss">
 body {
-  @apply bg-gray-500
+  @apply bg-gray-800
 }
 h1 {
   @apply text-lg;
