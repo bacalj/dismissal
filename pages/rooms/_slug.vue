@@ -3,17 +3,17 @@
     <div>
       <h1 class="green-text">room: {{ classroom }}</h1>
     </div>
-    <br><span class="green-text">---------</span>
+    <!-- <br><span class="green-text">---------</span> --> <br>
     <ul>
       <li v-for="s in studentsInRoom" :key="s.id" class="green-text flex mb-2">
-        <div class="w-1/4">
+        <div class="w-1/2">
           {{ s.first }} {{ s.last }}
         </div>
-        <div class="w-1/4">{{ s.status }}</div>
-        <div class="w-1/4">
-          <button class="ok">OK</button>
+        <div class="w-1/2">
+          <span class="green-text" :class="{ activo: s.status == 'rides-here' || s.status == 'walking'}">
+            {{ statusReport(s.status) }}
+          </span>
         </div>
-
       </li>
     </ul>
   </div>
@@ -80,6 +80,20 @@ export default {
 
         })
       })
+    },
+
+    statusReport(stat){
+      if (stat == 'rides-here'){
+        return 'ride is here'
+      }
+
+      else if (stat == 'waiting'){
+        return 'waiting...'
+      }
+
+      else {
+        return stat
+      }
     }
   }
 }
@@ -96,7 +110,7 @@ export default {
   color:rgb(87, 107, 87);
 }
 
-button.ok {
+.activo {
   color: rgb(31, 41, 55);
   background-color: rgb(153, 229, 153);
   @apply px-3
