@@ -29,9 +29,6 @@ export default {
     this.handleIncomingChanges()
   },
 
-  /*
-    filter nearly working, I think I have to watch selectado, and when it changes, call amInFilter or run filters in some other way, look and see what you did on self-evident
-  */
   computed: {
     selectado(){
       return this.$store.state.selectado
